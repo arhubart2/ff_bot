@@ -347,8 +347,8 @@ if __name__ == '__main__':
     #matchups:                           thursday evening at 7:30pm.
     #close scores (within 15.99 points): monday evening at 6:30pm.
     #trophies:                           tuesday morning at 7:30am.
-    #score update:                       friday, monday, and tuesday morning at 7:30am.
-    #score update:                       sunday at 1pm, 4pm, 8pm.
+    #score update:                       --None
+    #score update:                       sunday at 8pm.
 
     sched.add_job(bot_main, 'cron', ['get_power_rankings'], id='power_rankings',
         day_of_week='tue', hour=18, minute=30, start_date=ff_start_date, end_date=ff_end_date,
@@ -362,11 +362,8 @@ if __name__ == '__main__':
     sched.add_job(bot_main, 'cron', ['get_final'], id='final',
         day_of_week='tue', hour=7, minute=30, start_date=ff_start_date, end_date=ff_end_date,
         timezone=myTimezone, replace_existing=True)
-    sched.add_job(bot_main, 'cron', ['get_scoreboard_short'], id='scoreboard1',
-        day_of_week='fri,mon', hour=7, minute=30, start_date=ff_start_date, end_date=ff_end_date,
-        timezone=myTimezone, replace_existing=True)
     sched.add_job(bot_main, 'cron', ['get_scoreboard_short'], id='scoreboard2',
-        day_of_week='sun', hour='16,20', start_date=ff_start_date, end_date=ff_end_date,
+        day_of_week='sun', hour='20', start_date=ff_start_date, end_date=ff_end_date,
         timezone=myTimezone, replace_existing=True)
 
     sched.start()
